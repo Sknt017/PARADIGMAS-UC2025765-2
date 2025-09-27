@@ -31,9 +31,9 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jtxtUsuario = new javax.swing.JTextField();
-        jtxtContra = new javax.swing.JTextField();
         jbtSalir = new javax.swing.JButton();
         jbtAcceder = new javax.swing.JButton();
+        jpassContra = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,7 +73,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtxtUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxtContra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpassContra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -92,7 +92,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jtxtContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpassContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtSalir)
@@ -105,15 +105,21 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void jtxtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtUsuarioActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jtxtUsuarioActionPerformed
 
     private void jbtAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAccederActionPerformed
         // TODO add your handling code here:
         String userName = jtxtUsuario.getText();
-        String passw = jtxtContra.getText();
+        String passw = String.valueOf(jpassContra.getPassword());
+//        String passw = jpassContra.getPassword();
+//        System.out.println("in jpass: ");
         cAcceder lg = new cAcceder();
-        lg.validarAcceso(userName, passw);
+        if(lg.validarAcceso(userName, passw)){
+            frmEstudiantes mcrud = new frmEstudiantes();
+            mcrud.setVisible(true);
+            this.dispose();
+        };
     }//GEN-LAST:event_jbtAccederActionPerformed
 
     private void jbtSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalirActionPerformed
@@ -161,7 +167,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jbtAcceder;
     private javax.swing.JButton jbtSalir;
-    private javax.swing.JTextField jtxtContra;
+    private javax.swing.JPasswordField jpassContra;
     private javax.swing.JTextField jtxtUsuario;
     // End of variables declaration//GEN-END:variables
 }
