@@ -20,7 +20,7 @@ public class cFiltrar {
     //Crear un Método para Mostrar los Estudiantes de la BD
     public void mostrarEstudiantes(JTable tblEstudiantes, String valorEspecifico, String Opcion){
         //Conectar con la BD
-        Conexion objcn = new Conexion();
+        Conexion cn = new Conexion();
         //Crear un objeto para manejar la tabla
         DefaultTableModel modelo = new DefaultTableModel();
         //Crear una variable para el manejo de la instrucción SQL
@@ -36,27 +36,39 @@ public class cFiltrar {
         //Llevar los titulos a la tabla como tal
         tblEstudiantes.setModel(modelo);
         //Crear la instrucción SQL
-        sql = "SELECT * FROM T_Alumnos WHERE ? = '?'";
+//        switch (Opcion) {
+//            case "ID":
+//            case "Nombre":
+//            case "Apellido":
+//            case "Correo":
+//            case "Celular":
+//            case "Programa":
+//            case "Semestre":
+//                
+//                break;
+//            default:
+//                throw new AssertionError();
+//        }
+        sql = "SELECT * FROM Estudiantes WHERE "+ Opcion + " LIKE '%"+valorEspecifico+"%';";
         //Crear un vector para guardar los campos de cada registro de la BD
-        String [] datos = new String[20];
+        System.out.println(sql);
         //Crear una variable tipo statement
-        //Statement st;
-        try(PreparedStatement pst = objcn.conectar().prepareStatement(sql)){
-            //PreparedStatement pst = objcn.conectar().prepareStatement(sql);
+        Statement st;
+        try{
+            //PreparedStatement pst = objcn.conectar().prepareStatement(sql);            
             //reemplazando los signos de interrogacion
-            pst.setString(1,Opcion);
-            pst.setString(2,valorEspecifico);
-////            System.out.println(pst);
-//            pst.setString(3,celf);
-//            pst.execute();
-            ResultSet rs = pst.executeQuery();//st.executeQuery(sql);
+//            pst.setString(1,Opcion);
+            st = cn.conectar().createStatement();
+            ResultSet rs = st.executeQuery(sql);//st.executeQuery(sql);
+            String [] datos = new String[rs.getFetchSize()];
             //Recorrer el paquete de datos que esta en rs  y cargamos el vector 
 //            System.out.println(rs.getString(1));
             System.out.println(rs.getFetchSize());
             
             while (rs.next()){
-                for(int i = 0; i<20;i++){
+                for(int i = 0; i<rs.getFetchSize();i++){
                     datos[i] = rs.getString(i+1);
+                    modelo.addRow(datos);
                 }
 //                datos[0] = rs.getString(1);
 //                datos[1] = rs.getString(2);
@@ -65,7 +77,7 @@ public class cFiltrar {
 //                datos[4] = rs.getString(5);
 //                datos[5] = rs.getString(6);
 //                datos[6] = rs.getString(7);
-                modelo.addRow(datos);
+//                modelo.addRow(datos);
             }
             tblEstudiantes.setModel(modelo);
         }catch(Exception er)

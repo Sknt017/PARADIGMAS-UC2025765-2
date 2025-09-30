@@ -11,7 +11,7 @@ public class cInsertar {
     public void Adicion(String idf, String nfr, String afr, String cefr, String cofr, String pfr, String sfr){
         Conexion cn = new Conexion();
         //variable para construir la instruccion SQL
-        String sql = "INSERT INTO T_Alumnos (ID,Nombre,Apellido,Celular,Correo,Programa,Semestre)VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Estuantes (ID,Nombre,Apellido,Celular,Correo,Programa,Semestre)VALUES(?,?,?,?,?,?,?)";
         //prepara la conexion para la instruccion sql
         try{
             //prepara instruccion como instruccion sql

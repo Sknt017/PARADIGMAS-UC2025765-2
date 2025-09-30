@@ -30,7 +30,7 @@ public class cConsultar {
         //Llevar los titulos a la tabla como tal
         tblEstudiantes.setModel(modelo);
         //Crear la instrucción SQL
-        sql = "SELECT * FROM T_Alumnos";
+        sql = "SELECT * FROM Estudiantes";
         //Crear un vector para guardar los campos de cada registro de la BD
         String [] datos = new String[7];
         //Crear una variable tipo statement
