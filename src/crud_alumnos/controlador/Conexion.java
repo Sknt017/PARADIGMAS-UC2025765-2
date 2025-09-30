@@ -2,7 +2,7 @@ package crud_alumnos.controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,9 +18,11 @@ public class Conexion {
             Class.forName("org.sqlite.JDBC");//establecer conexion con la libreria sqlite-jdbc
             //Abrir la conexion
             conectar = DriverManager.getConnection(cadena);
-            JOptionPane.showMessageDialog(null, "¡Conexion exitosa!");
+//            JOptionPane.showMessageDialog(null, "¡Conexion exitosa!");
+            System.out.println("¡Conexion exitosa!");
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error!! La conexion no fue exitosa: "+e.getMessage());
+//            JOptionPane.showMessageDialog(null, "Error!! La conexion no fue exitosa: "+e.getMessage());
+            System.out.println("Error!! La conexion no fue exitosa: "+e.getMessage());
         };
         return conectar;
     }
@@ -28,10 +30,12 @@ public class Conexion {
         try{
             if(conectar != null){
                 conectar.close();
-                JOptionPane.showMessageDialog(null, "conexion cerrada");
+//                JOptionPane.showMessageDialog(null, "conexion cerrada");
+                  System.out.println("conexion cerrada");
             } 
         }catch (Exception e){
-                    JOptionPane.showMessageDialog(null, "la conexion no se cerro: " + e.getMessage());
+//                    JOptionPane.showMessageDialog(null, "la conexion no se cerro: " + e.getMessage());
+                    System.out.println("la conexion no se cerro: " + e.getMessage());
                     }
     }
 }

@@ -22,7 +22,7 @@ public class cAcceder {
     public boolean validarAcceso(String userName, String passw) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         //SHA256Hash hs = new SHA256Hash();
-        String sql = "SELECT * FROM Usuarios WHERE Usuario = ?";
+        String sql = "SELECT * FROM Usuarios WHERE username = ?";
         Conexion cn = new Conexion();
         try {
             PreparedStatement pst = cn.conectar().prepareStatement(sql);
