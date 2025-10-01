@@ -246,7 +246,8 @@ public class frmEstudiantes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:}
+        
         String idf = txtID.getText().toString();
         String nomf = txtNombre.getText().toString();
         String apef = txtApellido.getText().toString();
@@ -256,12 +257,16 @@ public class frmEstudiantes extends javax.swing.JFrame {
         String semf = txtSemestre.getText().toString();
         //convertir a entero el id
         int idint = Integer.parseInt(idf);
+        if(idf.isEmpty() || nomf.isEmpty() || apef.isEmpty() || celf.isEmpty() || corf.isEmpty() || prof.isEmpty() || semf.isEmpty()){
         cActualizar objActual = new cActualizar();
         //llamr el metodo de la actualizacion en  la bd
         objActual.actualizar(idf, nomf, apef, celf, corf, prof, semf);
         limpiar();
         cConsultar objConsulta = new cConsultar();
         objConsulta.mostrarEstudiantes(tblEstudiantes);
+        }else{
+            JOptionPane.showMessageDialog(null, "todos lo campos deben estar diligenciados.");
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
