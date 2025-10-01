@@ -1,6 +1,7 @@
 package crud_alumnos;
 
 import crud_alumnos.Vista.frmEstudiantes;
+import crud_alumnos.Vista.frmLogin;
 import crud_alumnos.controlador.Conexion;
 
 /**
@@ -16,8 +17,10 @@ public class CRUD_Alumnos {
         Conexion cn = new Conexion();
         
         cn.conectar();
-        frmEstudiantes frmEst= new frmEstudiantes();
-        frmEst.setVisible(true);
+//        frmEstudiantes frmEst= new frmEstudiantes();
+//        frmEst.setVisible(true);
+        frmLogin lg = new frmLogin();
+        lg.setVisible(true);
     }
     
 }
