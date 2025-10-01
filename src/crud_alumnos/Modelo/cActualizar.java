@@ -13,8 +13,8 @@ public class cActualizar {
     public void actualizar(String idf,String nomf,String apef, String celf, String corf,String progf,String semf){
         int intidf = Integer.parseInt(idf);
         Conexion objcn = new Conexion();
-        String sql = "";
-        sql = "UPDATE T_Alumnos SET nombre=?, apellido=?, Celular=? , Correo=?, programa=?, Semestre=? WHERE ID=  ?";
+        String sql;
+        sql = "UPDATE Estudiantes SET nombre=?, apellido=?, Celular=? , Correo=?, programa=?, Semestre=? WHERE ID=  ?";
         try{
             PreparedStatement pst = objcn.conectar().prepareStatement(sql);
             //reemplazando los signos de interrogacion

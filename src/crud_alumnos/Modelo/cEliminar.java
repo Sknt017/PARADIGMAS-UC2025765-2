@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class cEliminar {
     public void Eliminando(String idf){
         String sql ="";
-        sql ="DELETE FROM T_Alumnos WHERE ID = ?";
+        sql ="DELETE FROM Estudiantes WHERE ID = ?";
         // conectando a la bd
         Conexion objcn = new Conexion();
         try{
